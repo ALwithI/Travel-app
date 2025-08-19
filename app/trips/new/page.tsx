@@ -6,6 +6,7 @@ import { createTrip } from "@/lib/actions/create-trip";
 import { cn } from "@/lib/utils";
 import { UploadButton } from "@/lib/actions/upload-thing";
 import { use, useState, useTransition } from "react";
+import Image from "next/image";
 
 export default function Newtrip() {
   const [isPending, startTransition] = useTransition();
@@ -80,17 +81,29 @@ export default function Newtrip() {
                 />
               </div>
             </div>
-            <UploadButton
-              endpoint="imageUploader"
-              onClientUploadComplete={(res) => {
-                if (res && res[0].ufsUrl) {
-                  setImageUrl(res[0].ufsUrl);
-                }
-              }}
-              onUploadError={(error) => {
-                console.log("Upload error:", error);
-              }}
-            />
+            <div>
+              <label>Trip Image</label>
+              {imageUrl && (
+                <Image
+                  src={imageUrl}
+                  alt="Trip preview"
+                  className="w-full mb-4 rounded-md max-h-48 object-cover"
+                  width={300}
+                  height={100}
+                />
+              )}
+              <UploadButton
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                  if (res && res[0].ufsUrl) {
+                    setImageUrl(res[0].ufsUrl);
+                  }
+                }}
+                onUploadError={(error) => {
+                  console.log("Upload error:", error);
+                }}
+              />
+            </div>
             <Button type="submit" className="w-full" disabled={isPending}>
               {isPending ? "Creating..." : "Create Trip"}
             </Button>

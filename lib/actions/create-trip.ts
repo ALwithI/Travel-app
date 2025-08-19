@@ -14,7 +14,8 @@ if(!session || !session.user?.id){
 
 const title=formData.get("title")?.toString()
 const description=formData.get("description")?.toString();
-const startDateStr=formData.get("startDate")?.toString();
+const startDateStr=formData.get("imageUrl")?.toString();
+const imageUrl=formData.get("startDate")?.toString();
 const endDateStr=formData.get("endDate")?.toString();
 
 if(!title || !description || !startDateStr || !endDateStr){
@@ -26,6 +27,7 @@ await prisma.trip.create({
     data:{
         title,
         description,
+        imageUrl,
         startDate,
         endDate,
         userId:session.user?.id
