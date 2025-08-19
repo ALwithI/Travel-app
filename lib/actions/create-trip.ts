@@ -14,8 +14,8 @@ if(!session || !session.user?.id){
 
 const title=formData.get("title")?.toString()
 const description=formData.get("description")?.toString();
-const startDateStr=formData.get("imageUrl")?.toString();
-const imageUrl=formData.get("startDate")?.toString();
+const startDateStr=formData.get("startDate")?.toString();
+const imageUrl=formData.get("imageUrl")?.toString();
 const endDateStr=formData.get("endDate")?.toString();
 
 if(!title || !description || !startDateStr || !endDateStr){

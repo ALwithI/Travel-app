@@ -3,10 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images:{
-    remotePatterns:[{
-      hostname:"xotk1fk5qe.ufs.sh"   
-      
-  }]
+    remotePatterns:[ {
+      protocol: "https",
+      hostname: "*.ufs.sh", // 👈 allow all subdomains of ufs.sh
+    },]
   }
 };
 

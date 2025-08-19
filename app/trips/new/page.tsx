@@ -18,6 +18,9 @@ export default function Newtrip() {
         <CardContent>
           <form
             action={(FormData: FormData) => {
+              if (imageUrl) {
+                FormData.append("imageUrl", imageUrl);
+              }
               startTransition(() => {
                 createTrip(FormData);
               });
