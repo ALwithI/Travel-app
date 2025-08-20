@@ -6,7 +6,7 @@ import { Calendar, Plus } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Tabs, TabsList } from "./ui/tabs";
-import { TabsTrigger } from "@radix-ui/react-tabs";
+import { TabsContent, TabsTrigger } from "@radix-ui/react-tabs";
 import { useState } from "react";
 
 interface tripDetailClientProps {
@@ -62,6 +62,26 @@ export default function TripDetailClient({ trip }: tripDetailClientProps) {
               Map
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="overview" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h2 className="text-2xl font-semibold mb-4">Trip Summary</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <Calendar className="h-6 w-6 mr-3 text-gray-500" />
+                    <div>
+                      <p className="font-medium text-gray-700">Dates</p>
+                      <p className="text-sm text-gray-500">
+                        {trip.startDate.toLocaleDateString()} -{" "}
+                        {trip.endDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>
