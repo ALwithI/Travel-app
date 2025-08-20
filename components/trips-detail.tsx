@@ -75,9 +75,15 @@ export default function TripDetailClient({ trip }: tripDetailClientProps) {
                       <p className="text-sm text-gray-500">
                         {trip.startDate.toLocaleDateString()} -{" "}
                         {trip.endDate.toLocaleDateString()}
+                        <br />
+                        {`${Math.round(
+                          trip.endDate.getTime() -
+                            trip.startDate.getTime() / (1000 * 60 * 60 * 24)
+                        )} days(s)`}
                       </p>
                     </div>
                   </div>
+                  <div className="flex items-start"></div>
                 </div>
               </div>
             </div>
