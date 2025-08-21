@@ -2,6 +2,7 @@
 
 import { startTransition, useTransition } from "react";
 import { Button } from "./ui/button";
+import { addLocation } from "@/lib/actions/add-location";
 
 export default function NewLocationClient({ tripId }: { tripId: string }) {
   const [isPending, setIsPending] = useTransition();
